@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Form with Password Strength</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<style>
+  :root {
+    --bg:#f0f6fa;
+    --card:#ffffff;
+    --radius:12px;
+    --shadow:0 20px 60px rgba(0,0,0,0.05);
+    --primary:#0f6fff;
+    font-family: system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body {
+    margin:0;
+    background: linear-gradient(135deg,#e8f2fc 0%,#f9fcfe 100%);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:1rem;
+    color:#1f2f44;
+  }
+  .card {
+    width:100%;
+    max-width:420px;
+    background: var(--card);
+    border-radius: var(--radius);
+    padding:1.75rem 1.75rem 2.25rem;
+    box-shadow: var(--shadow);
+  }
+  h2 { margin:0 0 0.5rem; font-size:1.6rem; }
+  p { margin:0 0 1rem; font-size:0.9rem; color:#556877; }
+  form { display:flex; flex-direction:column; gap:1rem; }
+  .field { position:relative; display:flex; flex-direction:column; }
+  label {
+    font-size:0.65rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:4px;
+    color:#556877;
+  }
+  input {
+    padding:12px 14px;
+    border-radius:8px;
+    border:2px solid #dce7f1;
+    font-size:1rem;
+    outline:none;
+    transition: border .25s ease, box-shadow .25s ease;
+    background:#f9fcfe;
+  }
+  input:focus {
+    border-color: var(--primary);
+    box-shadow:0 0 0 4px rgba(15,111,255,0.15);
+  }
+  .error {
+    font-size:0.75rem;
+    color:#e05f5f;
+    margin-top:4px;
+    display:none;
+  }
+  .strength-wrapper {
+    margin-top:6px;
+    display:flex;
+    gap:8px;
+    align-items:center;
+    font-size:0.75rem;
+  }
+  .strength-bar {
+    flex:1;
+    height:8px;
+    background:#e3e8f3;
+    border-radius:6px;
+    overflow:hidden;
+    position:relative;
+  }
+  .strength-fill {
+    height:100%;
+    width:0%;
+    border-radius:6px;
+    transition: width .3s ease;
+    background: linear-gradient(90deg, #ff4e42, #f9c74f, #2ecc71);
+  }
+  .strength-text {
+    min-width:60px;
+    font-weight:600;
+    text-transform:capitalize;
+  }
+  .btn {
+    position:relative;
+    padding:12px 18px;
+    border:none;
+    background: var(--primary);
+    color:#fff;
+    font-weight:600;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:1rem;
+    overflow:hidden;
+    transition: transform .2s ease, filter .2s ease;
+  }
+  .btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    filter: brightness(1.07);
+  }
+  .success {
+    margin-top:14px;
+    padding:12px 16px;
+    background:#e6f7ee;
+    border:1px solid #6ac78d;
+    border-radius:8px;
+    font-size:0.9rem;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    animation: fadeIn .4s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity:0; transform: translateY(6px); }
+    to { opacity:1; transform: translateY(0); }
+  }
+  .small { font-size:0.65rem; color:#8a9bb8; margin-top:6px; }
+</style>
+</head>
+<body>
+  <div class="card" aria-label="contact form">
+    <h2>Contact Us</h2>
+    <p>Quickly send your details. Password strength shown live.</p>
+    <form id="f" novalidate>
+      <div class="field">
+        <label for="name">Name *</label>
+        <input type="text" id="name" required placeholder="Your full name" />
+        <div class="error" id="err-name">Name is required.</div>
+      </div>
+      <div class="field">
+        <label for="email">Email *</label>
+        <input type="email" id="email" required placeholder="you@example.com" />
+        <div class="error" id="err-email">Valid email required.</div>
+      </div>
+      <div class="field">
+        <label for="pw">Password *</label>
+        <input type="password" id="pw" required placeholder="Minimum 8 characters" />
+        <div class="strength-wrapper" aria-label="password strength meter">
+          <div class="strength-bar">
+            <div class="strength-fill" id="strengthFill"></div>
+          </div>
+          <div class="strength-text" id="strengthText">Too weak</div>
+        </div>
+        <div class="error" id="err-pw">Password must be at least 8 characters.</div>
+      </div>
+      <button type="submit" class="btn" id="submitBtn">Submit</button>
+    </form>
+    <div id="msg" class="success" style="display:none;">
+      ✅ Your message has been successfully submitted! We'll get back to you soon.
+    </div>
+    <div class="small">* All validation is client-side only.</div>
+  </div>
+
+  <script>
+    const form = document.getElementById('f');
+    const nameEl = document.getElementById('name');
+    const emailEl = document.getElementById('email');
+    const pwEl = document.getElementById('pw');
+    const msg = document.getElementById('msg');
+    const strengthFill = document.getElementById('strengthFill');
+    const strengthText = document.getElementById('strengthText');
+
+    function isEmail(e) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+    }
+
+    function evaluateStrength(pw) {
+      let score = 0;
+      if (pw.length >= 8) score += 1;
+      if (/[A-Z]/.test(pw)) score += 1;
+      if (/[a-z]/.test(pw)) score += 1;
+      if (/[0-9]/.test(pw)) score += 1;
+      if (/[\W_]/.test(pw)) score += 1;
+      return score; // 0..5
+    }
+
+    function updateStrength(pw) {
+      const score = evaluateStrength(pw);
+      const percent = Math.min((score / 5) * 100, 100);
+      strengthFill.style.width = percent + '%';
+
+      let label = 'Too weak';
+      if (score >= 4) label = 'Strong';
+      else if (score >= 2) label = 'Medium';
+      strengthText.textContent = label;
+    }
+
+    pwEl.addEventListener('input', () => updateStrength(pwEl.value));
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      let valid = true;
+      document.getElementById('err-name').style.display = 'none';
+      document.getElementById('err-email').style.display = 'none';
+      document.getElementById('err-pw').style.display = 'none';
+      msg.style.display = 'none';
+
+      if (!nameEl.value.trim()) {
+        document.getElementById('err-name').style.display = 'block';
+        valid = false;
+      }
+      if (!isEmail(emailEl.value.trim())) {
+        document.getElementById('err-email').style.display = 'block';
+        valid = false;
+      }
+      if (pwEl.value.length < 8) {
+        document.getElementById('err-pw').style.display = 'block';
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      form.reset();
+      updateStrength(''); // reset bar
+      strengthText.textContent = 'Too weak';
+      msg.style.display = 'flex';
+      setTimeout(() => { msg.style.display = 'none'; }, 3500);
+    });
+  </script>
+</body>
+</html>
