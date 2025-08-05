@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 3: Quiz + API + Responsive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .box {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+
+    h2 {
+      color: #009688;
+    }
+
+    .options button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      background-color: #f8f8f8;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .options button:hover {
+      background-color: #d7f5f5;
+    }
+
+    #score {
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    #next-btn {
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #009688;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #next-btn:hover {
+      background-color: #00796b;
+    }
+
+    button.fetch-btn {
+      padding: 10px 20px;
+      background-color: #607d8b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button.fetch-btn:hover {
+      background-color: #455a64;
+    }
+
+    /* ✅ Responsive Design */
+    @media (max-width: 600px) {
+      h2 {
+        font-size: 1.4rem;
+      }
+
+      .options button {
+        font-size: 15px;
+      }
+
+      button.fetch-btn, #next-btn {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- ✅ Part 1 + 2: Responsive Quiz Section -->
+    <div class="box">
+      <h2 id="question">Loading question...</h2>
+      <div class="options" id="options"></div>
+      <button id="next-btn" onclick="nextQuestion()">Next</button>
+      <p id="score">Score: 0</p>
+    </div>
+
+    <!-- ✅ Part 3: Joke API Fetch -->
+    <div class="box">
+      <h2>Bonus: Random Joke Generator 🤣</h2>
+      <button class="fetch-btn" onclick="getJoke()">Fetch a Joke</button>
+      <p id="joke">Click the button to get a joke!</p>
+    </div>
+
+  </div>
+
+  <script>
+    // ✅ Quiz Questions
+    const quiz = [
+      { question: "1. What is the capital of India?", options: ["Mumbai", "Delhi", "Kolkata", "Chennai"], answer: 1 },
+      { question: "2. Smallest prime number?", options: ["0", "1", "2", "3"], answer: 2 },
+      { question: "3. HTML stands for?", options: ["Hyper Tool Markup", "Hyper Text Markup Language", "Hyper Transfer Markup", "High Text Machine Language"], answer: 1 },
+      { question: "4. CSS is used for?", options: ["Content", "Servers", "Styling", "Databases"], answer: 2 },
+      { question: "5. JS is a _____ language.", options: ["Markup", "Styling", "Programming", "None"], answer: 2 },
+      { question: "6. Who developed JavaScript?", options: ["Google", "Netscape", "Microsoft", "Apple"], answer: 1 },
+      { question: "7. Tag for line break in HTML?", options: ["<br>", "<lb>", "<break>", "<line>"], answer: 0 },
+      { question: "8. JS arrays use?", options: ["{}", "()", "[]", "<>"], answer: 2 },
+      { question: "9. What styles HTML?", options: ["CSS", "Python", "JS", "SQL"], answer: 0 },
+      { question: "10. API stands for?", options: ["Advanced Programming Interface", "Application Programming Interface", "Application Page Integration", "Advanced Page Interface"], answer: 1 }
+    ];
+
+    let current = 0;
+    let score = 0;
+
+    function loadQuestion() {
+      const q = quiz[current];
+      document.getElementById("question").innerText = q.question;
+      const optionsDiv = document.getElementById("options");
+      optionsDiv.innerHTML = "";
+
+      q.options.forEach((opt, index) => {
+        const btn = document.createElement("button");
+        btn.innerText = opt;
+        btn.onclick = () => {
+          if (index === q.answer) {
+            score++;
+            alert("✅ Correct!");
+          } else {
+            alert("❌ Wrong!");
+          }
+          document.getElementById("score").innerText = "Score: " + score;
+        };
+        optionsDiv.appendChild(btn);
+      });
+    }
+
+    function nextQuestion() {
+      current++;
+      if (current < quiz.length) {
+        loadQuestion();
+      } else {
+        document.getElementById("question").innerText = "🎉 Quiz Completed!";
+        document.getElementById("options").innerHTML = "";
+        document.getElementById("next-btn").style.display = "none";
+      }
+    }
+
+    loadQuestion();
+
+    // ✅ Joke API
+    async function getJoke() {
+      try {
+        const res = await fetch("https://official-joke-api.appspot.com/random_joke");
+        const data = await res.json();
+        document.getElementById("joke").innerText = `${data.setup} - ${data.punchline}`;
+      } catch (error) {
+        document.getElementById("joke").innerText = "Failed to fetch joke.";
+      }
+    }
+  </script>
+
+</body>
+</html>
