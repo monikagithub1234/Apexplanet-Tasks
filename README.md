@@ -87,6 +87,52 @@ The form validates user input in real-time and shows the password strength dynam
 
 
 
+**TASK -3**
+# 🌟 Task 3: Responsive Quiz + Joke API + JavaScript
+
+This project is built as part of my web development internship Task 3. It combines responsive design, an interactive quiz application using JavaScript, and an API integration to fetch random jokes.
+
+## 🚀 Features
+
+- 🎯 **Interactive Quiz** with 10 questions (HTML, CSS, JS based)
+- 🧠 Tracks score and provides immediate feedback
+- 📱 Fully **Responsive Design** for mobile and desktop
+- 🤣 Bonus: **Random Joke Generator** using a public API
+
+## 💻 Tech Stack
+
+- **HTML5**
+- **CSS3**
+- **JavaScript (ES6)**
+- **Official Joke API** (https://official-joke-api.appspot.com)
+
+## 📋 How to Run
+
+1. Clone the repository or download the HTML file.
+2. Open the file `index.html` in any modern browser.
+3. Try out the quiz and click "Fetch a Joke" for fun!
+
+## ✅ Functionalities Covered
+
+- DOM Manipulation using JavaScript
+- Event Handling and Dynamic Content Loading
+- API Integration using `fetch`
+- Responsive Styling with CSS Media Queries
+
+## 🙋‍♀️ Author
+
+**Monika Priya Nagam**
+
+## 🔗 Connect with Me
+
+- [LinkedIn](https://www.linkedin.com/in/monika-priya-nagam/)
+- [GitHub](https://github.com/monikagithub1234)
+
+## 📜 License
+
+This project is open-source and available under the [MIT License](LICENSE).
+
+
 
 
 
