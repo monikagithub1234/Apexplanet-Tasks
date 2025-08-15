@@ -133,14 +133,88 @@ This project is built as part of my web development internship Task 3. It combin
 This project is open-source and available under the [MIT License](LICENSE).
 
 
+**Task - 5**
+# Apple Store Clone – Responsive E-Commerce Website 🍏
+
+This is a **responsive Apple Store clone** built using **HTML, CSS, and JavaScript**. It replicates the look and feel of Apple's official store, with functional features like product selection, price sorting, and a shopping cart.
+
+---
+
+## **Features**
+
+- Dynamic **product grid** with multiple iPhone models
+- **Storage selection** per product
+- **Price sorting**: Low to High / High to Low
+- **Search bar** for filtering products
+- **Light/Dark mode toggle**
+- **Add to Cart** functionality with alert confirmation
+- Fully **responsive** layout for desktop and mobile devices
+
+---
+
+## **Technologies Used**
+
+- **Frontend:** HTML5, CSS3, JavaScript (ES6+)
+- **Web Storage:** LocalStorage for cart management
+- **Responsive Design:** Flexbox & CSS Grid
+- **UX Enhancements:** Theme toggle, search, filters
+
+---
+
+## **Project Structure**
+
+apple-store-clone/
+├── images/ # Product images
+├── css/
+│ └── style.css # Main stylesheet
+├── js/
+│ └── iphone.js # Main JavaScript file
+├── index.html # Home page
+├── mac.html # Mac page
+├── ipad.html # iPad page
+├── watch.html # Watch page
+├── airpods.html # AirPods page
+└── accessories.html # Accessories page
 
 
+---
+
+## **How to Run Locally**
+
+1. Clone the repository:
+```bash
+git clone https://github.com/monikagithub1234/apple-store-clone.git
 
 
+Open index.html in your browser
 
+Explore the features like search, filters, and add to cart
 
+Future Improvements
 
+Full shopping cart page with item management
 
+User authentication for login/signup
+
+Checkout flow for complete e-commerce functionality
+
+Wishlist feature (optional toggle)
+
+Demo
+
+(If deployed, add your live link here, e.g., Netlify or Vercel)
+
+Author
+
+Nagam Monika Priya
+
+GitHub: https://github.com/monikagithub1234
+
+LinkedIn: https://www.linkedin.com/in/monika-priya-nagam/
+
+License
+
+This project is for learning and demonstration purposes. Feel free to use and modify it!
 
 
 
