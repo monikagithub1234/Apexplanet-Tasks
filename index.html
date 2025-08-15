@@ -1,0 +1,163 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apple Store Clone – Responsive E-Commerce Website</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Shop the latest iPhone models. Apple-style design with light/dark mode." />
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a href="index.html" class="apple-logo" aria-label="Apple home"></a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="index.html" class="nav-link active">iPhone</a>
+        <a href="mac.html" class="nav-link">Mac</a>
+        <a href="ipad.html" class="nav-link">iPad</a>
+        <a href="watch.html" class="nav-link">Watch</a>
+        <a href="airpods.html" class="nav-link">AirPods</a>
+        <a href="accessories.html" class="nav-link">Accessories</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="searchBtn" class="icon-btn" aria-label="Search" title="Search">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M10.5 3a7.5 7.5 0 015.95 12.12l4.22 4.21-1.41 1.42-4.22-4.22A7.5 7.5 0 1110.5 3zm0 2a5.5 5.5 0 100 11 5.5 5.5 0 000-11z"/></svg>
+        </button>
+        <button id="themeToggle" class="toggle">
+          <span class="sun" aria-hidden="true">☀</span>
+          <span class="moon" aria-hidden="true">🌙</span>
+        </button>
+      </div>
+    </div>
+    <div id="searchBar" class="search-bar" hidden>
+      <input id="searchInput" type="search" placeholder="Search iPhone" aria-label="Search iPhone" />
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1 class="hero-title">iPhone</h1>
+      <p class="hero-subtitle">Explore the latest models. Super-fast. Super-powerful.</p>
+    </section>
+
+    <section class="filters">
+      <div class="filter-row">
+        <div class="filter">
+          <label for="storageFilter">Storage</label>
+          <select id="storageFilter">
+            <option value="all" selected>All</option>
+            <option value="64GB">64GB</option>
+            <option value="128GB">128GB</option>
+            <option value="256GB">256GB</option>
+            <option value="512GB">512GB</option>
+            <option value="1TB">1TB</option>
+            <option value="2TB">2TB</option>
+          </select>
+        </div>
+        <div class="filter">
+          <label for="priceSort">Sort by</label>
+          <select id="priceSort">
+            <option value="default" selected>Recommended</option>
+            <option value="low-high">Price: Low to High</option>
+            <option value="high-low">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section id="productGrid" class="grid"></section>
+  </main>
+
+  <footer class="site-footer">
+  <a href="https://www.linkedin.com/in/monika-priya-nagam/">linkedin</a><br/>
+  <a href="https://github.com/monikagithub1234">github</a>
+  <p>© <span id="year"></span> Apple Store Clone (Demo) | Designed & Developed by Nagam Monika Priya</p>
+</footer>
+
+
+  <script src="iphone.js"></script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apple Store Clone – Responsive E-Commerce Website</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Shop the latest iPhone models. Apple-style design with light/dark mode." />
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a href="index.html" class="apple-logo" aria-label="Apple home"></a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="index.html" class="nav-link active">iPhone</a>
+        <a href="mac.html" class="nav-link">Mac</a>
+        <a href="ipad.html" class="nav-link">iPad</a>
+        <a href="watch.html" class="nav-link">Watch</a>
+        <a href="airpods.html" class="nav-link">AirPods</a>
+        <a href="accessories.html" class="nav-link">Accessories</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="searchBtn" class="icon-btn" aria-label="Search" title="Search">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path d="M10.5 3a7.5 7.5 0 015.95 12.12l4.22 4.21-1.41 1.42-4.22-4.22A7.5 7.5 0 1110.5 3zm0 2a5.5 5.5 0 100 11 5.5 5.5 0 000-11z"/>
+          </svg>
+        </button>
+        <button id="themeToggle" class="toggle">
+          <span class="sun" aria-hidden="true">☀</span>
+          <span class="moon" aria-hidden="true">🌙</span>
+        </button>
+      </div>
+    </div>
+    <div id="searchBar" class="search-bar" hidden>
+      <input id="searchInput" type="search" placeholder="Search iPhone" aria-label="Search iPhone" />
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1 class="hero-title">iPhone</h1>
+      <p class="hero-subtitle">Explore the latest models. Super-fast. Super-powerful.</p>
+    </section>
+
+    <section class="filters">
+      <div class="filter-row">
+        <div class="filter">
+          <label for="storageFilter">Storage</label>
+          <select id="storageFilter">
+            <option value="all" selected>All</option>
+            <option value="64GB">64GB</option>
+            <option value="128GB">128GB</option>
+            <option value="256GB">256GB</option>
+            <option value="512GB">512GB</option>
+            <option value="1TB">1TB</option>
+            <option value="2TB">2TB</option>
+          </select>
+        </div>
+        <div class="filter">
+          <label for="priceSort">Sort by</label>
+          <select id="priceSort">
+            <option value="default" selected>Recommended</option>
+            <option value="low-high">Price: Low to High</option>
+            <option value="high-low">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section id="productGrid" class="grid"></section>
+  </main>
+
+  <footer class="site-footer">
+    <a href="https://www.linkedin.com/in/monika-priya-nagam/">LinkedIn</a><br/>
+    <a href="https://github.com/monikagithub1234">GitHub</a>
+    <p>© <span id="year"></span> Apple Store Clone (Demo) | Designed & Developed by Nagam Monika Priya</p>
+  </footer>
+
+  <script src="iphone.js"></script>
+</body>
+</html>

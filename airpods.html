@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AirPods — Store</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Shop the latest AirPods models. Apple-style design with light/dark mode." />
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a href="index.html" class="apple-logo" aria-label="Apple home"></a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="index.html" class="nav-link">iPhone</a>
+        <a href="mac.html" class="nav-link">Mac</a>
+        <a href="ipad.html" class="nav-link">iPad</a>
+        <a href="watch.html" class="nav-link">Watch</a>
+        <a href="airpods.html" class="nav-link active">AirPods</a>
+        <a href="accessories.html" class="nav-link">Accessories</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="searchBtn" class="icon-btn" aria-label="Search" title="Search">🔍</button>
+        <button id="themeToggle" class="toggle">
+          <span class="sun" aria-hidden="true">☀</span>
+          <span class="moon" aria-hidden="true">🌙</span>
+        </button>
+      </div>
+    </div>
+    <div id="searchBar" class="search-bar" hidden>
+      <input id="searchInput" type="search" placeholder="Search AirPods" aria-label="Search AirPods" />
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1 class="hero-title">AirPods</h1>
+      <p class="hero-subtitle">Explore the latest models. Super-fast. Super-powerful.</p>
+    </section>
+
+    <section class="filters">
+      <div class="filter-row">
+        <div class="filter">
+          <label for="storageFilter">Storage</label>
+          <select id="storageFilter">
+            <option value="all" selected>All</option>
+          </select>
+        </div>
+        <div class="filter">
+          <label for="priceSort">Sort by</label>
+          <select id="priceSort">
+            <option value="default" selected>Recommended</option>
+            <option value="low-high">Price: Low to High</option>
+            <option value="high-low">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section id="productGrid" class="grid"></section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Apple Store Clone (Demo) | Designed & Developed by Nagam Monika Priya</p>
+  </footer>
+
+  <script src="airpods.js"></script>
+</body>
+</html>
