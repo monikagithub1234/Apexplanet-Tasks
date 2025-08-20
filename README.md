@@ -133,6 +133,65 @@ This project is built as part of my web development internship Task 3. It combin
 This project is open-source and available under the [MIT License](LICENSE).
 
 
+**Task -4**
+# Monika Priya - Portfolio Website
+
+A modern, responsive portfolio website showcasing my skills, projects, and experience as a web developer.
+
+## 🚀 Features
+- Responsive design that works on all devices
+- Dark/Light mode toggle
+- Smooth animations and transitions
+- Project filtering system
+- Contact form functionality
+- Professional UI/UX design
+
+## 🛠 Technologies Used
+- HTML5
+- CSS3 (with CSS Variables for theming)
+- JavaScript (ES6+)
+- Font Awesome Icons
+- Google Fonts (Inter)
+
+## 📁 Project Structure
+portfolio/
+├── index.html
+├── style.css
+├── script.js
+├── assets/
+│ ├── images/
+│ └── resume.pdf
+└── README.md
+
+# Notes App
+
+A clean, responsive notes application that allows users to create, edit, and manage their notes efficiently.
+
+
+## 🚀 Features
+- Create, edit, and delete notes
+- Responsive design for all devices
+- Local storage to save notes
+- Search functionality
+- Clean and intuitive user interface
+- Categorization of notes
+
+## 🛠️ Technologies Used
+- HTML5
+- CSS3
+- JavaScript (ES6+)
+- Local Storage API
+
+## 📁 Project Structure
+notes-app/
+├── index.html
+├── style.css
+├── script.js
+├── assets/
+│ └── images/
+└── README.md
+
+
 **Task - 5**
 # Apple Store Clone – Responsive E-Commerce Website 🍏
 
